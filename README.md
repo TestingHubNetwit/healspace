@@ -34,7 +34,7 @@ View your app in AI Studio: https://ai.studio/apps/drive/1TXKCjuCnhcPtQgjiRSGg__
    ```
 
 3. Open your browser and visit:
-   `http://localhost:3000`
+   `http://localhost:3014`
 
 To stop the container:
 ```bash

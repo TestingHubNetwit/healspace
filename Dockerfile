@@ -1,5 +1,4 @@
-# Stage 1: Build the application
-FROM node:20-alpine as builder
+FROM node:20-alpine
 
 WORKDIR /app
 
@@ -19,17 +18,8 @@ ENV GEMINI_API_KEY=$GEMINI_API_KEY
 # Build the application
 RUN npm run build
 
-# Stage 2: Serve with Nginx
-FROM nginx:alpine
+# Expose port 3014
+EXPOSE 3014
 
-# Copy the build output from the builder stage
-COPY --from=builder /app/dist /usr/share/nginx/html
-
-# Copy custom Nginx configuration
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# Expose port 80
-EXPOSE 80
-
-# Start Nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Start the application using vite preview
+CMD ["npm", "run", "preview", "--", "--host", "0.0.0.0", "--port", "3014"]

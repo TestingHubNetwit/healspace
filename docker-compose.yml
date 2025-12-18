@@ -6,6 +6,6 @@ services:
       args:
         - GEMINI_API_KEY=${GEMINI_API_KEY}
     ports:
-      - "3000:80"
+      - "3014:3014"
     restart: always
     container_name: healspace-frontend
